@@ -1,6 +1,7 @@
 
 # Loads default set of integrations. Do not remove.
 default_config:
+  
 
 # Load frontend themes from the themes folder
 frontend:
@@ -13,3 +14,20 @@ tts:
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+
+input_text: !include variables.yaml
+
+device_tracker:
+  - platform: ping
+    interval_seconds: 120
+    consider_home: 300
+    hosts:
+      peti_phone: "{{ states('input_text.phone_ip_address') }}"
+
+
+person:
+  - name: Peter
+    id: peterpal00
+    device_trackers:
+      - device_tracker.peti_phone
+
