@@ -1,0 +1,6 @@
+.cloud
+.ssh
+.storage
+*secrets*
+*.db*
+home-assistant.log*
